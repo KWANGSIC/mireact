@@ -32,9 +32,6 @@ class Counter extends Component {
                     <button onClick={this.handleIncrease}>+</button>
                     <button onClick={this.handleDecrease}>-</button>
                 </div>
-                <div>
-                    <button onClick="alert('hello');">Click Me</button>
-                </div>
             </div>
         );
     }
