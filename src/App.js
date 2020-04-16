@@ -4,11 +4,12 @@ import MyName from './MyName';
 import Counter from './Counter';
 import Subject from './Subjeuct';
 import Toc from './Toc';
+import Control from './Control';
+import CreateContents from "./CreateContents";
 
 
-class Contents extends Component {
+class ReadContents extends Component {
     render() {
-        console.log('contents log');
         return (
             <article>
                 <h2>{this.props.title}</h2>
@@ -26,7 +27,7 @@ class App extends Component {
         // console.log('event in', this);
         // e.preventDefault();
         // return;
-        console.log(e);
+        // console.log(e);
         e.preventDefault();
         // alert('hi');
         // this.state.mode = 'welcome';
@@ -58,21 +59,26 @@ class App extends Component {
         }
     }
     render() {
-        var _title, _desc = null;
+        var _title, _desc, _article = null;
         if(this.state.mode === 'welcome'){
             _title = this.state.welcome.title;
             _desc = this.state.welcome.desc;
+            _article = <ReadContents title={_title} desc={_desc}/>
         } else if(this.state.mode === 'read'){
             var i = 0;
             while (i < this.state.contents.length){
                 var data = this.state.contents[i]
-                if (data.id === this.state.selected_content_id){
+                // console.log(this.state.selected_content_id)
+                if (data.id === Number(this.state.selected_content_id)){
                     _title = data.title;
                     _desc = data.desc;
                     break;
                 }
                 i = i + 1
             }
+            _article = <ReadContents title={_title} desc={_desc}/>
+        }else if (this.state.mode === 'create'){
+            _article = <CreateContents></CreateContents>
         }
         const style = {
             backgroundColor: 'black',
@@ -120,11 +126,18 @@ class App extends Component {
                 </header>*/}
                 <Toc onChangePage={function (id) {
                     // alert('hi')
-                    this.setState( {mode:'read',
+                    this.setState( {
+                        mode:'read',
                         selected_content_id:Number(id)
                     });
                 }.bind(this)} data={this.state.contents}/>
-                <Contents title={_title} desc={_desc}/>
+                <Control onChangeMode ={function (_mode) {
+                    // console.log(_mode);
+                    this.setState({mode:_mode})
+                }.bind(this)}></Control>
+
+
+                {_article}
                 <div style={style}>
                     hi there
                 </div>
