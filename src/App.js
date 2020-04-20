@@ -6,6 +6,8 @@ import Subject from './Subjeuct';
 import Toc from './Toc';
 import Control from './Control';
 import CreateContents from "./CreateContents";
+import PhoneForm from "./PhoneForm";
+import PhoneInfoList from "./PhoneInfoList";
 
 
 class ReadContents extends Component {
@@ -21,6 +23,27 @@ class ReadContents extends Component {
 }
 
 class App extends Component {
+    id = 2
+    state = {
+        information: [
+            {
+                id: 0,
+                name: '김민준',
+                phone: '010-0000-0000'
+            },
+            {
+                id: 1,
+                name: '홍길동',
+                phone: '010-0000-0001'
+            }
+        ]
+    }
+    handleCreate = (data) => {
+        const {information} = this.state;
+        this.setState({
+            information: information.concat({id: this.id++, ...data})
+        })
+    }
     //외부 펑션
     funcTest = (e) => {
 
@@ -86,10 +109,10 @@ class App extends Component {
                 // this.state.contents.push(
                 //     {id:this.max_content_id, title:_title, desc:_desc}
                 // )
-                var _contents = this.state.contents.concat({id:this.max_content_id, title:_title, desc:_desc})
+                var _contents = this.state.contents.concat({id: this.max_content_id, title: _title, desc: _desc})
                 this.setState(
                     {
-                        contents:_contents
+                        contents: _contents
                     }
                 )
             }.bind(this)}></CreateContents>
@@ -100,6 +123,8 @@ class App extends Component {
             color: 'white',
             fontSize: '12px'
         };
+
+        const { information } = this.state;
         return (
             <div>
                 <Subject title={this.state.subject.title} sub="world wide web!"
@@ -160,6 +185,10 @@ class App extends Component {
                 <MyName name="rrrr"/>
 
                 <Counter/>
+                <PhoneForm
+                    onCreate={this.handleCreate}
+                />
+                <PhoneInfoList data={this.state.information}/>
             </div>
         );
     }
