@@ -2,7 +2,16 @@ import React, {Component} from "react";
 import './App.css'
 
 class Toc extends Component {
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log('shouldComponentUpdate');
+        if (this.props.data === nextProps.data){
+            return false;
+        }
+        return true;
+    }
+
     render() {
+        console.log('Toc');
         var lists = [];
         var data = this.props.data;
         var i = 0;
