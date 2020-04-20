@@ -6,12 +6,9 @@ import Subject from './Subjeuct';
 import Toc from './Toc';
 import Control from './Control';
 import CreateContents from "./CreateContents";
-<<<<<<< HEAD
 import UpdateContents from "./UpdateContents";
-=======
 import PhoneForm from "./PhoneForm";
 import PhoneInfoList from "./PhoneInfoList";
->>>>>>> 52f2e071eb78969e96334dde3204d30e06149808
 
 
 class ReadContents extends Component {
@@ -144,7 +141,6 @@ class App extends Component {
                 // newArray.push(
                 //     {id:this.max_content_id, title:_title, desc:_desc}
                 // )
-<<<<<<< HEAD
                 // this.setState(
                 //     {
                 //         contents:newArray
@@ -152,9 +148,7 @@ class App extends Component {
                 // )
                 // concat
                 var _contents = this.state.contents.concat({id:this.max_content_id, title:_title, desc:_desc})
-=======
                 var _contents = this.state.contents.concat({id: this.max_content_id, title: _title, desc: _desc})
->>>>>>> 52f2e071eb78969e96334dde3204d30e06149808
                 this.setState(
                     {
                         contents: _contents
