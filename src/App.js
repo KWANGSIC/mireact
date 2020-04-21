@@ -9,6 +9,7 @@ import CreateContents from "./CreateContents";
 import UpdateContents from "./UpdateContents";
 import PhoneForm from "./PhoneForm";
 import PhoneInfoList from "./PhoneInfoList";
+import AjaxTest from "./AjaxTest";
 
 
 class ReadContents extends Component {
@@ -292,6 +293,8 @@ class App extends Component {
                     onRemove={this.handleRemove}
                     onUpdate={this.handleUpdate}
                 />
+
+                <AjaxTest></AjaxTest>
             </div>
         );
     }
