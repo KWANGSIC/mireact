@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import './css/index.css';
 import MyName from './MyName';
 import Counter from './Counter';
 import Subject from './Subjeuct';
@@ -9,6 +10,10 @@ import CreateContents from "./CreateContents";
 import UpdateContents from "./UpdateContents";
 import PhoneForm from "./PhoneForm";
 import PhoneInfoList from "./PhoneInfoList";
+
+
+import LeftPane from './components/LeftPane';
+import RightPane from './components/RightPane';
 
 
 class ReadContents extends Component {
@@ -292,6 +297,12 @@ class App extends Component {
                     onRemove={this.handleRemove}
                     onUpdate={this.handleUpdate}
                 />
+
+                <div className='panes'>
+                    <LeftPane />
+                    <RightPane />
+                </div>
+
             </div>
         );
     }
